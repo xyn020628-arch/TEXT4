@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+from tensorflow.keras import models, layers, datasets
+
+(train_image, train_label), (test_image, test_label) = datasets.mnist.load_data()
+train_image, test_image = train_image / 255.0, test_image / 255.0 
+
+model = models.Sequential([
+    layers.Flatten(input_shape=(28, 28)),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='sgd',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+print("开始训练...")
+history = model.fit(train_image, train_label, epochs=5)
+
+acc_values = history.history['accuracy']
+print("\n--- 结果比较 ---")
+print(f"Epoch 2 结束时的准确性: {acc_values[1]:.4f}") 
+print(f"Epoch 5 结束时的准确性: {acc_values[4]:.4f}")
+
+#模型有更多的时间去“复习”数据和修正错误。就像学生复习功课，复习 5 遍通常比只复习 2 遍记得更牢固。
