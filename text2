@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(12, 3))
+
+# --- 图 1 (Index 1000) ---
+ax1.imshow(train_image[1000], cmap='gray') # 如果是彩色图，去掉 cmap='gray'
+ax1.set_title('Index: 1000')
+ax1.axis('off') # 不显示坐标轴
+
+# --- 图 2 (Index 2000) ---
+ax2.imshow(train_image[2000], cmap='gray')
+ax2.set_title('Index: 2000')
+ax2.axis('off')
+
+# --- 图 3 (Index 3000) ---
+ax3.imshow(train_image[3000], cmap='gray')
+ax3.set_title('Index: 3000')
+ax3.axis('off')
+
+# --- 图 4 (Index 4000) ---
+ax4.imshow(train_image[4000], cmap='gray')
+ax4.set_title('Index: 4000')
+ax4.axis('off')
+
+plt.tight_layout() 
+plt.show()
